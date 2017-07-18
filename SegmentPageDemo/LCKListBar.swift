@@ -10,7 +10,7 @@ import UIKit
 
 /// 头列表
 ///
-/// 参数: 无
+/// 参数: lists
 ///
 /// @since 6.0.0
 /// @author yuanjilee
@@ -48,7 +48,7 @@ class LCKListBar: UIScrollView {
     super.init(frame: frame)
     
     showsHorizontalScrollIndicator = false
-    backgroundColor = .white
+    backgroundColor = UIColor(R: 238, G: 238, B: 238)
     
     bottomLine.frame = CGRect(x: 0, y: bounds.size.height-2, width: 30, height: 2)
     addSubview(bottomLine)

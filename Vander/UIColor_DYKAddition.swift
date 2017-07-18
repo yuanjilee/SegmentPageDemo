@@ -30,7 +30,15 @@ extension UIColor {
     return image
   }
   
+  
+  //MARK: - RGB
+  
   public convenience init(R: CGFloat, G: CGFloat, B: CGFloat, A: CGFloat=1) {
     self.init(red: R/255, green: G/255, blue: B/255, alpha: A)
+  }
+  
+  //MARK: - Random
+  class func randomColor() -> UIColor {
+    return UIColor(R: CGFloat(arc4random_uniform(256)), G: CGFloat(arc4random_uniform(256)), B: CGFloat(arc4random_uniform(256)))
   }
 }
