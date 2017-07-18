@@ -24,8 +24,24 @@ class ViewController: UIViewController {
     
     _setupAppearance()
   }
+}
 
-
+extension ViewController: UIScrollViewDelegate {
+  
+  //MARK: - UIScrollViewDelegate
+  
+  func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+    //
+  }
+  
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    let index = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+    _listbarScrollToRelatedItemWith(index: index)
+  }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    //
+  }
 }
 
 extension ViewController {
@@ -41,6 +57,10 @@ extension ViewController {
   private func _setupListBar() {
     _listBar = LCKListBar(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.width, height: 50))
     _listBar.lists = _lists
+    _listBar.listBarItemDidClickClosure = { [weak self](index) in
+      guard let strongSelf = self else { return }
+      strongSelf._scrollviewScrollToRelatedPageWith(index: index)
+    }
     view.addSubview(_listBar)
   }
   
@@ -51,11 +71,21 @@ extension ViewController {
       make.leading.trailing.bottom.equalTo(0)
       make.top.equalTo(_listBar.snp.bottom)
     }
-
-    //_scrollView.backgroundColor = .red
+    _scrollView.delegate = self
     _scrollView.isPagingEnabled = true
     _scrollView.showsHorizontalScrollIndicator = true
     _scrollView.contentSize.width = view.bounds.width  * CGFloat(_lists.count)
+    _scrollView.contentOffset = .zero
+  }
+  
+  /// Event
+  private func _scrollviewScrollToRelatedPageWith(index: Int) {
+    let offset = CGPoint(x: view.bounds.width * CGFloat(index), y: _scrollView.frame.origin.y)
+    _scrollView.setContentOffset(offset, animated: true)
+  }
+  
+  fileprivate func _listbarScrollToRelatedItemWith(index: Int) {
+    _listBar.scrollToCurrentItemWith(index: index)
   }
 }
 

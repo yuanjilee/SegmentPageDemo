@@ -16,6 +16,11 @@ import UIKit
 /// @author yuanjilee
 class LCKListBar: UIScrollView {
   
+  //MARK: - Public
+  
+  var listBarItemDidClickClosure:((_ index: Int) -> Void)?
+  
+  
   //MARK: - Commons 
   
   let marginBetweenItems: CGFloat = 10
@@ -36,6 +41,7 @@ class LCKListBar: UIScrollView {
   }
   let bottomLine: UIView
   var itemButtonSelected: UIButton?
+  var _buttons: [UIButton] = []
   
   
   //MARK: - Lifecycle
@@ -62,6 +68,13 @@ class LCKListBar: UIScrollView {
 
 extension LCKListBar {
   
+  //MARK: - Public
+
+  open func scrollToCurrentItemWith(index: Int) {
+    let button = _buttons[index]
+    _itemButtonDidClick(sender: button)
+  }
+  
   //MARK: - Private
   
   fileprivate func _setItemWith(title: String) {
@@ -75,7 +88,7 @@ extension LCKListBar {
     itemButton.setTitleColor(kDefaultBlueColor, for: .selected)
     itemButton.addTarget(self, action: #selector(_itemButtonDidClick(sender:)), for: .touchUpInside)
     addSubview(itemButton)
-
+    _buttons.append(itemButton)
     maxWidth += (itemWidth + marginBetweenItems)
     contentSize.width = maxWidth
     
@@ -98,7 +111,9 @@ extension LCKListBar {
       sender.setTitleColor(kDefaultBlueColor, for: .normal)
       itemButtonSelected = sender
       
+      debugPrint(_getIndexWithButton(button: sender))
       // TODO: more action with linded tab VC
+      listBarItemDidClickClosure?(_getIndexWithButton(button: sender))
     }
     
     // animation during switch action
@@ -120,6 +135,11 @@ extension LCKListBar {
       }
       self.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }
+  }
+  
+  private func _getIndexWithButton(button: UIButton) -> Int {
+    let index = _buttons.index(of: button)
+    return index ?? 0
   }
 }
 
