@@ -19,6 +19,7 @@ class LCKListBar: UIScrollView {
   //MARK: - Public
   
   var listBarItemDidClickClosure:((_ index: Int) -> Void)?
+  var segmentType: SegmentType = .equal
   
   
   //MARK: - Commons 
@@ -58,6 +59,12 @@ class LCKListBar: UIScrollView {
     
     bottomLine.frame = CGRect(x: 0, y: bounds.size.height-2, width: 30, height: 2)
     addSubview(bottomLine)
+    
+    if segmentType == .equal {
+      maxWidth = 0
+    } else {
+      maxWidth = 10
+    }
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -78,9 +85,13 @@ extension LCKListBar {
   //MARK: - Private
   
   fileprivate func _setItemWith(title: String) {
-    let itemWidth = _calculateSizeWith(fontSize: titleFont, text: title).width + 20
+    var itemWidth: CGFloat
+    if segmentType == .equal {
+      itemWidth = bounds.width / CGFloat(lists.count)
+    } else {
+      itemWidth = _calculateSizeWith(fontSize: titleFont, text: title).width + 20
+    }
     let itemButton = UIButton(frame: CGRect(x: maxWidth, y: 0, width: itemWidth, height: bounds.size.height))
-    //itemButton.backgroundColor = .red
     itemButton.titleLabel?.font = UIFont.systemFont(ofSize: titleFont)
     itemButton.setTitle(title, for: UIControlState())
     itemButton.setTitleColor(kTextColor, for: .normal)
@@ -123,17 +134,21 @@ extension LCKListBar {
       frame.size.width = sender.frame.width
       self.bottomLine.frame = frame
     }) { (finished: Bool) in
-      // current offset
-      var offsetX = sender.center.x - self.bounds.width * 0.5
-      if offsetX < 0 {
-        offsetX = 0
+      if self.segmentType == .equal {
+        return
+      } else {
+        // current offset
+        var offsetX = sender.center.x - self.bounds.width * 0.5
+        if offsetX < 0 {
+          offsetX = 0
+        }
+        // max offset
+        let maxOffsetX = self.contentSize.width - self.bounds.width
+        if offsetX > maxOffsetX {
+          offsetX = maxOffsetX
+        }
+        self.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
       }
-      // max offset
-      let maxOffsetX = self.contentSize.width - self.bounds.width
-      if offsetX > maxOffsetX {
-        offsetX = maxOffsetX
-      }
-      self.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }
   }
   

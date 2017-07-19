@@ -9,12 +9,19 @@
 import UIKit
 import SnapKit
 
+enum SegmentType: Int {
+  case equal
+  case slide
+}
+
 class ViewController: UIViewController {
+  
+  
   
   //MARK: - Property
   var _listBar: LCKListBar!
   var _scrollView: UIScrollView!
-  var _lists: [String] = ["任务", "日程", "简报", "审批", "请假", "文件", "哈哈哈", "哈哈哈", "哈哈哈哈哈", "哈哈", "哈哈", "哈哈", "哈哈", "哈哈哈"]
+  var _lists: [String] = ["任务", "日程", "简报"]//, "审批", "请假", "文件", "哈哈哈", "哈哈哈", "哈哈哈哈哈", "哈哈", "哈哈", "哈哈", "哈哈", "哈哈哈"]
   
 
   //MARK: - Lifecycle
