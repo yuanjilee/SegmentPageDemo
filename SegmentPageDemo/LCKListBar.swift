@@ -112,7 +112,7 @@ extension LCKListBar {
       itemButtonSelected = sender
       
       debugPrint(_getIndexWithButton(button: sender))
-      // TODO: more action with linded tab VC
+      // more action with linded tab VC
       listBarItemDidClickClosure?(_getIndexWithButton(button: sender))
     }
     
@@ -142,7 +142,4 @@ extension LCKListBar {
     return index ?? 0
   }
 }
-
-
-
 

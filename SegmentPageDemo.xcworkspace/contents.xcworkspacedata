@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ContentViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:SegmentPageDemo.xcodeproj">
    </FileRef>
    <FileRef

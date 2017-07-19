@@ -19,6 +19,7 @@
 		7A1248D71F1CB1D1004308E6 /* LCKListBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1248D61F1CB1D1004308E6 /* LCKListBar.swift */; };
 		7A1248EC1F1CC098004308E6 /* UIColor_DYKAddition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1248EB1F1CC098004308E6 /* UIColor_DYKAddition.swift */; };
 		7AF5E5691F1DAEA800692D51 /* LCKCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E5681F1DAEA800692D51 /* LCKCommons.swift */; };
+		7AF5E56D1F1F045000692D51 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E56C1F1F045000692D51 /* ContentViewController.swift */; };
 		B496669C52087C495620DF38 /* Pods_SegmentPageDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904C42602EC27552E520A900 /* Pods_SegmentPageDemoTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		7A1248D61F1CB1D1004308E6 /* LCKListBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCKListBar.swift; sourceTree = "<group>"; };
 		7A1248EB1F1CC098004308E6 /* UIColor_DYKAddition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor_DYKAddition.swift; sourceTree = "<group>"; };
 		7AF5E5681F1DAEA800692D51 /* LCKCommons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCKCommons.swift; sourceTree = "<group>"; };
+		7AF5E56C1F1F045000692D51 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		888A978ACD38107021346698 /* Pods-SegmentPageDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SegmentPageDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SegmentPageDemoTests/Pods-SegmentPageDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		904C42602EC27552E520A900 /* Pods_SegmentPageDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SegmentPageDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C91EB62891ED844860399F73 /* Pods_SegmentPageDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SegmentPageDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 			children = (
 				7A1248A81F1CAE51004308E6 /* AppDelegate.swift */,
 				7A1248AA1F1CAE51004308E6 /* ViewController.swift */,
+				7AF5E56C1F1F045000692D51 /* ContentViewController.swift */,
 				7A1248D61F1CB1D1004308E6 /* LCKListBar.swift */,
 				7A1248AC1F1CAE51004308E6 /* Main.storyboard */,
 				7A1248AF1F1CAE51004308E6 /* Assets.xcassets */,
@@ -482,6 +485,7 @@
 				7A1248D71F1CB1D1004308E6 /* LCKListBar.swift in Sources */,
 				7A1248AB1F1CAE51004308E6 /* ViewController.swift in Sources */,
 				7A1248A91F1CAE51004308E6 /* AppDelegate.swift in Sources */,
+				7AF5E56D1F1F045000692D51 /* ContentViewController.swift in Sources */,
 				7AF5E5691F1DAEA800692D51 /* LCKCommons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

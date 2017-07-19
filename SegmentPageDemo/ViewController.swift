@@ -52,6 +52,7 @@ extension ViewController {
     
     _setupListBar()
     _setupScrollView()
+    _setupContentController()
   }
   
   private func _setupListBar() {
@@ -60,12 +61,13 @@ extension ViewController {
     _listBar.listBarItemDidClickClosure = { [weak self](index) in
       guard let strongSelf = self else { return }
       strongSelf._scrollviewScrollToRelatedPageWith(index: index)
+      strongSelf._addChildControllerToContentWith(index: index)
     }
     view.addSubview(_listBar)
   }
   
   private func _setupScrollView() {
-    _scrollView = UIScrollView(frame: .zero)
+    _scrollView = UIScrollView()
     view.addSubview(_scrollView)
     _scrollView.snp.makeConstraints { (make) in
       make.leading.trailing.bottom.equalTo(0)
@@ -78,14 +80,29 @@ extension ViewController {
     _scrollView.contentOffset = .zero
   }
   
-  /// Event
+  private func _setupContentController() {
+    for _ in 0..<_lists.count {
+      let contentVC = ContentViewController()
+      addChildViewController(contentVC)
+    }
+    _addChildControllerToContentWith(index: 0)
+  }
+  
+  // Event
   private func _scrollviewScrollToRelatedPageWith(index: Int) {
-    let offset = CGPoint(x: view.bounds.width * CGFloat(index), y: _scrollView.frame.origin.y)
-    _scrollView.setContentOffset(offset, animated: true)
+    var offset = _scrollView.contentOffset
+    offset.x = view.bounds.width * CGFloat(index)
+    _scrollView.contentOffset = offset
   }
   
   fileprivate func _listbarScrollToRelatedItemWith(index: Int) {
     _listBar.scrollToCurrentItemWith(index: index)
+  }
+  
+  private func _addChildControllerToContentWith(index: Int) {
+    let vc = childViewControllers[index]
+    _scrollView.addSubview(vc.view)
+    vc.view.frame = CGRect(x: _scrollView.bounds.width * CGFloat(index), y: 0, width: _scrollView.frame.width, height: _scrollView.frame.height)
   }
 }
 
