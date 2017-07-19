@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SegmentPageController.swift
 //  SegmentPageDemo
 //
 //  Created by yuanjilee on 2017/7/17.
@@ -14,12 +14,11 @@ enum SegmentType: Int {
   case slide
 }
 
-class ViewController: UIViewController {
-  
-  
+class SegmentPageController: UIViewController {
   
   //MARK: - Property
-  var _listBar: LCKListBar!
+  
+  var _listBar: TitleList!
   var _scrollView: UIScrollView!
   var _lists: [String] = ["任务", "日程", "简报"]//, "审批", "请假", "文件", "哈哈哈", "哈哈哈", "哈哈哈哈哈", "哈哈", "哈哈", "哈哈", "哈哈", "哈哈哈"]
   
@@ -33,7 +32,7 @@ class ViewController: UIViewController {
   }
 }
 
-extension ViewController: UIScrollViewDelegate {
+extension SegmentPageController: UIScrollViewDelegate {
   
   //MARK: - UIScrollViewDelegate
   
@@ -51,7 +50,7 @@ extension ViewController: UIScrollViewDelegate {
   }
 }
 
-extension ViewController {
+extension SegmentPageController {
   
   //MARK: - Appearance
   
@@ -63,7 +62,7 @@ extension ViewController {
   }
   
   private func _setupListBar() {
-    _listBar = LCKListBar(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.width, height: 50))
+    _listBar = TitleList(frame: CGRect(x: 0, y: 20, width: UIScreen.main.bounds.width, height: 50))
     _listBar.lists = _lists
     _listBar.listBarItemDidClickClosure = { [weak self](index) in
       guard let strongSelf = self else { return }

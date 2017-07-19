@@ -1,5 +1,5 @@
 //
-//  LCKListBar.swift
+//  TitleList.swift
 //  SegmentPageDemo
 //
 //  Created by yuanjilee on 2017/7/17.
@@ -14,7 +14,7 @@ import UIKit
 ///
 /// @since 6.0.0
 /// @author yuanjilee
-class LCKListBar: UIScrollView {
+class TitleList: UIScrollView {
   
   //MARK: - Public
   
@@ -75,7 +75,7 @@ class LCKListBar: UIScrollView {
 
 }
 
-extension LCKListBar {
+extension TitleList {
   
   //MARK: - Public
 
