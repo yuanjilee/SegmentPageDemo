@@ -24,7 +24,7 @@ class LCKListBar: UIScrollView {
   
   //MARK: - Commons 
   
-  let marginBetweenItems: CGFloat = 10
+  var marginBetweenItems: CGFloat = 10
   
 
   //MARK: - Property
@@ -62,8 +62,10 @@ class LCKListBar: UIScrollView {
     
     if segmentType == .equal {
       maxWidth = 0
+      marginBetweenItems = 0
     } else {
       maxWidth = 10
+      marginBetweenItems = 20
     }
   }
   
