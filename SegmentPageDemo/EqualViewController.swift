@@ -26,12 +26,9 @@ class EqualViewController: UIViewController {
     let segmentVC = SegmentPageController()
     segmentVC.titles = titles
     segmentVC.childVCs  =  vcs
-    addChildViewController(segmentVC)
     view.addSubview(segmentVC.view)
-    segmentVC.view.snp.makeConstraints { (make) in
-      make.leading.trailing.bottom.equalTo(0)
-      make.top.equalTo(64)
-    }
+    segmentVC.view.frame = CGRect(x: 0, y: 64, width: view.bounds.size.width, height: view.bounds.size.height)
+    //addChildViewController(segmentVC)
   }
   
   override func didReceiveMemoryWarning() {

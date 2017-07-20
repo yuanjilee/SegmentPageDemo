@@ -27,7 +27,7 @@ class SlideViewController: UIViewController {
       segmentVC.titles = titles
       segmentVC.childVCs  =  vcs
       segmentVC.segmentType = .slide
-      addChildViewController(segmentVC)
+      //addChildViewController(segmentVC)
       view.addSubview(segmentVC.view)
       segmentVC.view.snp.makeConstraints { (make) in
         make.leading.trailing.bottom.equalTo(0)

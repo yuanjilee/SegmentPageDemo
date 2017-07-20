@@ -85,10 +85,6 @@ extension SegmentPageController {
   private func _setupScrollView() {
     _scrollView = UIScrollView(frame: CGRect(x: 0, y: _listBar.frame.maxY, width: view.bounds.width, height: view.bounds.height))
     view.addSubview(_scrollView)
-//    _scrollView.snp.makeConstraints { (make) in
-//      make.leading.trailing.bottom.equalTo(0)
-//      make.top.equalTo(_listBar.snp.bottom)
-//    }
     _scrollView.delegate = self
     _scrollView.isPagingEnabled = true
     _scrollView.showsHorizontalScrollIndicator = true
@@ -97,10 +93,6 @@ extension SegmentPageController {
   }
   
   private func _setupContentController(vcs: [UIViewController]) {
-//    for _ in 0..<_lists.count {
-//      let contentVC = ContentViewController()
-//      addChildViewController(contentVC)
-//    }
     for vc in vcs {
       addChildViewController(vc)
     }

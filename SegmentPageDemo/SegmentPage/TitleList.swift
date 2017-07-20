@@ -101,7 +101,6 @@ extension TitleList {
     itemButton.setTitleColor(kTextColor, for: .highlighted)
     itemButton.setTitleColor(kDefaultBlueColor, for: .selected)
     itemButton.addTarget(self, action: #selector(_itemButtonDidClick(sender:)), for: .touchUpInside)
-    itemButton.backgroundColor = .yellow
     addSubview(itemButton)
     _buttons.append(itemButton)
     maxWidth += (itemWidth + marginBetweenItems)
