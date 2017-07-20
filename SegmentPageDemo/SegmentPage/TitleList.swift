@@ -8,9 +8,9 @@
 
 import UIKit
 
-/// 头列表
+/// TitleList View
 ///
-/// 参数: lists
+/// 参数: titles
 ///
 /// @since 6.0.0
 /// @author yuanjilee
@@ -18,8 +18,17 @@ class TitleList: UIScrollView {
   
   //MARK: - Public
   
-  var listBarItemDidClickClosure:((_ index: Int) -> Void)?
+  var titles: [String] = [] {
+    didSet {
+      for list in titles {
+        _setItemWith(title: list)
+      }
+      contentSize = CGSize(width: maxWidth, height: bounds.size.height)
+    }
+  }
   var segmentType: SegmentType = .equal
+  
+  var listBarItemDidClickClosure:((_ index: Int) -> Void)?
   
   
   //MARK: - Commons 
@@ -31,15 +40,6 @@ class TitleList: UIScrollView {
   
   var maxWidth: CGFloat = 10
   var titleFont: CGFloat = 13
-  
-  var lists: [String] = [] {
-    didSet {
-      for list in lists {
-        _setItemWith(title: list)
-      }
-      contentSize = CGSize(width: maxWidth, height: bounds.size.height)
-    }
-  }
   let bottomLine: UIView
   var itemButtonSelected: UIButton?
   var _buttons: [UIButton] = []
@@ -95,7 +95,7 @@ extension TitleList {
   fileprivate func _setItemWith(title: String) {
     var itemWidth: CGFloat
     if segmentType == .equal {
-      itemWidth = bounds.width / CGFloat(lists.count)
+      itemWidth = bounds.width / CGFloat(titles.count)
     } else {
       itemWidth = _calculateSizeWith(fontSize: titleFont, text: title).width + 20
     }

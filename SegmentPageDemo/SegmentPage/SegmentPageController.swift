@@ -9,6 +9,14 @@
 import UIKit
 import SnapKit
 
+/// To show titleList and segment content viewcontrollers
+///
+/// @params titles: (required) as titleList datasource
+///         childVCs: (required) as segment conetent viewcontrollers
+///         segmentType: (optional) default equal type
+///
+/// @since 6.0.0
+/// @author yuanjilee
 enum SegmentType: Int {
   case equal
   case slide
@@ -25,17 +33,14 @@ class SegmentPageController: UIViewController {
   
   //MARK: - Property
   
-  var _listBar: TitleList!
+  var _titleList: TitleList!
   var _scrollView: UIScrollView!
-  var _lists: [String] = ["任务", "日程", "简报", "审批", "请假", "文件", "哈哈哈", "哈哈哈", "哈哈哈哈哈", "哈哈", "哈哈", "哈哈", "哈哈", "哈哈哈"]
   
 
   //MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    _lists = titles
-    
     
     _setupAppearance()
   }
@@ -71,24 +76,24 @@ extension SegmentPageController {
   }
   
   private func _setupListBar() {
-    _listBar = TitleList(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50), segmentType: segmentType)
-    _listBar.lists = _lists
-    _listBar.listBarItemDidClickClosure = { [weak self](index) in
+    _titleList = TitleList(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50), segmentType: segmentType)
+    _titleList.titles = titles
+    _titleList.listBarItemDidClickClosure = { [weak self](index) in
       guard let strongSelf = self else { return }
       strongSelf._scrollviewScrollToRelatedPageWith(index: index)
       strongSelf._addChildControllerToContentWith(index: index)
     }
     //_listBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50)
-    view.addSubview(_listBar)
+    view.addSubview(_titleList)
   }
   
   private func _setupScrollView() {
-    _scrollView = UIScrollView(frame: CGRect(x: 0, y: _listBar.frame.maxY, width: view.bounds.width, height: view.bounds.height))
+    _scrollView = UIScrollView(frame: CGRect(x: 0, y: _titleList.frame.maxY, width: view.bounds.width, height: view.bounds.height))
     view.addSubview(_scrollView)
     _scrollView.delegate = self
     _scrollView.isPagingEnabled = true
     _scrollView.showsHorizontalScrollIndicator = true
-    _scrollView.contentSize.width = view.bounds.width  * CGFloat(_lists.count)
+    _scrollView.contentSize.width = view.bounds.width  * CGFloat(titles.count)
     _scrollView.contentOffset = .zero
   }
   
@@ -99,7 +104,8 @@ extension SegmentPageController {
     _addChildControllerToContentWith(index: 0)
   }
   
-  // Event
+  
+  //MARK: - Event
   private func _scrollviewScrollToRelatedPageWith(index: Int) {
     var offset = _scrollView.contentOffset
     offset.x = view.bounds.width * CGFloat(index)
@@ -107,7 +113,7 @@ extension SegmentPageController {
   }
   
   fileprivate func _listbarScrollToRelatedItemWith(index: Int) {
-    _listBar.scrollToCurrentItemWith(index: index)
+    _titleList.scrollToCurrentItemWith(index: index)
   }
   
   private func _addChildControllerToContentWith(index: Int) {
