@@ -56,6 +56,7 @@ class TitleList: UIScrollView {
     
     showsHorizontalScrollIndicator = false
     backgroundColor = UIColor(R: 238, G: 238, B: 238)
+
     
     bottomLine.frame = CGRect(x: 0, y: bounds.size.height-2, width: 30, height: 2)
     addSubview(bottomLine)
@@ -100,6 +101,7 @@ extension TitleList {
     itemButton.setTitleColor(kTextColor, for: .highlighted)
     itemButton.setTitleColor(kDefaultBlueColor, for: .selected)
     itemButton.addTarget(self, action: #selector(_itemButtonDidClick(sender:)), for: .touchUpInside)
+    itemButton.backgroundColor = .yellow
     addSubview(itemButton)
     _buttons.append(itemButton)
     maxWidth += (itemWidth + marginBetweenItems)

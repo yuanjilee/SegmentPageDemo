@@ -1,5 +1,5 @@
 //
-//  ContentViewController.swift
+//  EqualViewController.swift
 //  SegmentPageDemo
 //
 //  Created by yuanjilee on 2017/7/19.
@@ -8,33 +8,29 @@
 
 import UIKit
 
-class ContentViewController: UIViewController {
-  
-  enum ContentType: Int {
-    case one
-    case two
-    case three
-  }
-  
-  var contentType: ContentType = .one
+class EqualViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    // Do any additional setup after loading the view.
+    view.backgroundColor = .white
+    let titles = ["任务", "日程", "简报"]
     
-    view.backgroundColor = UIColor.randomColor()
-    debugPrint("ContentViewController init")
+    var vcs: [UIViewController] = []
+    for i in 0..<titles.count {
+      let vc = ContentViewController()
+      vc.contentType = ContentViewController.ContentType(rawValue: i)!
+      vcs.append(vc)
+    }
     
-    switch contentType {
-    case .one:
-      view.backgroundColor = .yellow
-      break
-    case .two:
-      view.backgroundColor = .green
-    case .three:
-      view.backgroundColor = .red
-      break
+    let segmentVC = SegmentPageController()
+    segmentVC.titles = titles
+    segmentVC.childVCs  =  vcs
+    addChildViewController(segmentVC)
+    view.addSubview(segmentVC.view)
+    segmentVC.view.snp.makeConstraints { (make) in
+      make.leading.trailing.bottom.equalTo(0)
+      make.top.equalTo(64)
     }
   }
   
