@@ -68,9 +68,11 @@ extension LaunchViewController: UITableViewDataSource, UITableViewDelegate {
     
     if indexPath.row == 0 {
       let equalVC = EqualViewController()
+      equalVC.title = "Equal"
       navigationController?.pushViewController(equalVC, animated: true)
     } else {
       let slideVC = SlideViewController()
+      slideVC.title = "Slide"
       navigationController?.pushViewController(slideVC, animated: true)
     }
   }

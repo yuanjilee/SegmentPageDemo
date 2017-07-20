@@ -18,7 +18,7 @@ class SlideViewController: UIViewController {
       let titles = ["任务", "日程", "简报", "审批", "请假", "文件", "哈哈哈", "哈哈哈", "哈哈哈哈哈", "哈哈", "哈哈", "哈哈", "哈哈", "哈哈哈"]
       
       var vcs: [UIViewController] = []
-      for i in 0..<titles.count {
+      for _ in 0..<titles.count {
         let vc = ContentViewController()
         vcs.append(vc)
       }
@@ -31,7 +31,7 @@ class SlideViewController: UIViewController {
       view.addSubview(segmentVC.view)
       segmentVC.view.snp.makeConstraints { (make) in
         make.leading.trailing.bottom.equalTo(0)
-        make.top.equalTo(100)
+        make.top.equalTo(64)
       }
       
     }

@@ -71,14 +71,14 @@ extension SegmentPageController {
   }
   
   private func _setupListBar() {
-    _listBar = TitleList(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+    _listBar = TitleList(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50), segmentType: segmentType)
     _listBar.lists = _lists
-    _listBar.segmentType = segmentType
     _listBar.listBarItemDidClickClosure = { [weak self](index) in
       guard let strongSelf = self else { return }
       strongSelf._scrollviewScrollToRelatedPageWith(index: index)
       strongSelf._addChildControllerToContentWith(index: index)
     }
+    //_listBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50)
     view.addSubview(_listBar)
   }
   

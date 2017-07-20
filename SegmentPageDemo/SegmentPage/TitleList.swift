@@ -56,11 +56,16 @@ class TitleList: UIScrollView {
     
     showsHorizontalScrollIndicator = false
     backgroundColor = UIColor(R: 238, G: 238, B: 238)
-
     
     bottomLine.frame = CGRect(x: 0, y: bounds.size.height-2, width: 30, height: 2)
     addSubview(bottomLine)
+  }
+  
+  convenience init(frame: CGRect, segmentType: SegmentType) {
     
+    self.init(frame: frame)
+    
+    self.segmentType = segmentType
     if segmentType == .equal {
       maxWidth = 0
       marginBetweenItems = 0
