@@ -13,6 +13,7 @@ class SlideViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+      automaticallyAdjustsScrollViewInsets = false
       view.backgroundColor = .white
       
       let titles = ["任务", "日程", "简报", "审批", "请假", "文件", "哈哈哈", "哈哈哈", "哈哈哈哈哈", "哈哈", "哈哈", "哈哈", "哈哈", "哈哈哈"]
@@ -27,7 +28,7 @@ class SlideViewController: UIViewController {
       segmentVC.titles = titles
       segmentVC.childVCs  =  vcs
       segmentVC.segmentType = .slide
-      //addChildViewController(segmentVC)
+      addChildViewController(segmentVC)
       view.addSubview(segmentVC.view)
       segmentVC.view.snp.makeConstraints { (make) in
         make.leading.trailing.bottom.equalTo(0)

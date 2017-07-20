@@ -116,6 +116,8 @@ extension TitleList {
       itemButtonSelected = itemButton
       bottomLine.frame = CGRect(x: itemButton.frame.minX, y: bounds.size.height-2, width: itemButton.frame.width, height: 2)
     }
+    
+    debugPrint(contentOffset, contentSize)
   }
   
   private func _calculateSizeWith(fontSize: CGFloat, text: String) -> CGSize {

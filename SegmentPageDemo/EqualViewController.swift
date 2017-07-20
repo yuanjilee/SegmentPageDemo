@@ -12,7 +12,7 @@ class EqualViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    automaticallyAdjustsScrollViewInsets = false
     view.backgroundColor = .white
     let titles = ["任务", "日程", "简报"]
     
