@@ -92,6 +92,17 @@ extension TitleList {
   
   public func moveToSelectedIndicator(index: Int) {
     let sender = _buttons[index]
+    
+    if itemButtonSelected != sender { // switch item selector
+      itemButtonSelected?.setTitleColor(kTextColor, for: .normal)
+      sender.setTitleColor(kDefaultBlueColor, for: .normal)
+      itemButtonSelected = sender
+      
+      debugPrint(_getIndexWithButton(button: sender))
+      // more action with linded tab VC
+      listBarItemDidClickClosure?(_getIndexWithButton(button: sender))
+    }
+    
     // animation during switch action
     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
       var frame = self.bottomLine.frame
