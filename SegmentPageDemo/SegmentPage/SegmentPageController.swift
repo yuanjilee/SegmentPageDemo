@@ -22,7 +22,15 @@ enum SegmentType: Int {
   case slide
 }
 
-class SegmentPageController: UIViewController {
+open class SegmentPageController: UIViewController {
+  
+  //MARK: - Enum
+  
+  enum ScrollDirection: Int {
+    case left
+    case right
+    case other
+  }
   
   //MARK: - Public
   
@@ -35,32 +43,16 @@ class SegmentPageController: UIViewController {
   
   var _titleList: TitleList!
   var _scrollView: UIScrollView!
-  
+  var _currentPageIndex: Int = 0
+  var _startPageIndex: Int = 0
+  var _endPageIndex: Int = 0
 
   //MARK: - Lifecycle
   
-  override func viewDidLoad() {
+  override open func viewDidLoad() {
     super.viewDidLoad()
     
     _setupAppearance()
-  }
-}
-
-extension SegmentPageController: UIScrollViewDelegate {
-  
-  //MARK: - UIScrollViewDelegate
-  
-  func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-    //
-  }
-  
-  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    let index = Int(scrollView.contentOffset.x / scrollView.bounds.width)
-    _listbarScrollToRelatedItemWith(index: index)
-  }
-  
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    //
   }
 }
 
@@ -83,7 +75,6 @@ extension SegmentPageController {
       strongSelf._scrollviewScrollToRelatedPageWith(index: index)
       strongSelf._addChildControllerToContentWith(index: index)
     }
-    //_listBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50)
     view.addSubview(_titleList)
   }
   
@@ -116,10 +107,13 @@ extension SegmentPageController {
     _titleList.scrollToCurrentItemWith(index: index)
   }
   
-  private func _addChildControllerToContentWith(index: Int) {
+  func _addChildControllerToContentWith(index: Int) {
     let vc = childViewControllers[index]
-    _scrollView.addSubview(vc.view)
+    vc.willMove(toParentViewController: self)
     vc.view.frame = CGRect(x: _scrollView.bounds.width * CGFloat(index), y: 0, width: _scrollView.frame.width, height: _scrollView.frame.height)
+    addChildViewController(vc)
+    _scrollView.addSubview(vc.view)
+    vc.didMove(toParentViewController: self)
   }
 }
 
