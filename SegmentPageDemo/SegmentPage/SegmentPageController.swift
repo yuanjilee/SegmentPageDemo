@@ -64,7 +64,8 @@ extension SegmentPageController {
     
     _setupListBar()
     _setupScrollView()
-    _setupContentController(vcs: childVCs)
+    //_setupContentController(vcs: childVCs)
+    _addChildControllerToContentWith(index: 0)
   }
   
   private func _setupListBar() {
@@ -108,11 +109,13 @@ extension SegmentPageController {
   }
   
   func _addChildControllerToContentWith(index: Int) {
-    let vc = childViewControllers[index]
+    let vc = childVCs[index]
     vc.willMove(toParentViewController: self)
+    
     vc.view.frame = CGRect(x: _scrollView.bounds.width * CGFloat(index), y: 0, width: _scrollView.frame.width, height: _scrollView.frame.height)
     addChildViewController(vc)
     _scrollView.addSubview(vc.view)
+    
     vc.didMove(toParentViewController: self)
   }
 }
