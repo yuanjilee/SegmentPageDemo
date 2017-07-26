@@ -35,6 +35,8 @@ extension SegmentPageController: UIScrollViewDelegate {
   public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     _currentPageIndex = Int(scrollView.contentOffset.x / scrollView.bounds.width)
     _startPageIndex = _currentPageIndex
+    
+    _moveToSelectedIndicator(index: _currentPageIndex)
   }
   
 }

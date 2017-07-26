@@ -90,6 +90,33 @@ extension TitleList {
     _itemButtonDidClick(sender: button)
   }
   
+  public func moveToSelectedIndicator(index: Int) {
+    let sender = _buttons[index]
+    // animation during switch action
+    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+      var frame = self.bottomLine.frame
+      frame.origin.x = sender.frame.minX
+      frame.size.width = sender.frame.width
+      self.bottomLine.frame = frame
+    }) { (finished: Bool) in
+      if self.segmentType == .equal {
+        return
+      } else {
+        // current offset
+        var offsetX = sender.center.x - self.bounds.width * 0.5
+        if offsetX < 0 {
+          offsetX = 0
+        }
+        // max offset
+        let maxOffsetX = self.contentSize.width - self.bounds.width
+        if offsetX > maxOffsetX {
+          offsetX = maxOffsetX
+        }
+        self.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
+      }
+    }
+  }
+  
   //MARK: - Private
   
   fileprivate func _setItemWith(title: String) {

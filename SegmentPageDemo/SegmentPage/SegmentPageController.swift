@@ -104,8 +104,12 @@ extension SegmentPageController {
     _scrollView.contentOffset = offset
   }
   
-  fileprivate func _listbarScrollToRelatedItemWith(index: Int) {
+  func _listbarScrollToRelatedItemWith(index: Int) {
     _titleList.scrollToCurrentItemWith(index: index)
+  }
+  
+  func _moveToSelectedIndicator(index: Int) {
+    _titleList.moveToSelectedIndicator(index: index)
   }
   
   func _addChildControllerToContentWith(index: Int) {
