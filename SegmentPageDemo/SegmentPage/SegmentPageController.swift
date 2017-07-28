@@ -58,25 +58,16 @@ open class SegmentPageController: UIViewController {
   
   open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     
-    let _currentPage = Int(_scrollView.contentOffset.x / _scrollView.bounds.width)
-    
-    _scrollView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-    _scrollView.contentSize = CGSize(width: size.width * CGFloat(titles.count), height: size.height)
-    //_scrollView.contentOffset = CGPoint(x: CGFloat(_currentPage) * _scrollView.frame.width, y: 0)
+    let currentPage = Int(_scrollView.contentOffset.x / _scrollView.bounds.width)
+    _scrollView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height-50)
+    _scrollView.contentSize = CGSize(width: _scrollView.frame.width * CGFloat(titles.count), height: _scrollView.frame.height)
     
     for (index,view) in _scrollView.subviews.enumerated() {
       let frame = CGRect(x: size.width * CGFloat(index), y: 0, width: _scrollView.frame.width, height: _scrollView.frame.height)
       view.frame = frame
-      
-      
-      debugPrint("====================")
-      debugPrint("index= \(index), view = \(view), frame = \(frame)")
     }
     
-    _scrollView.setContentOffset(CGPoint(x: CGFloat(_currentPage) * _scrollView.frame.width, y: 0), animated: false)
-    debugPrint(_scrollView)
-    
-    
+    _scrollView.setContentOffset(CGPoint(x: CGFloat(currentPage) * _scrollView.frame.width, y: 0), animated: false)
   }
   
   
@@ -88,21 +79,15 @@ extension SegmentPageController {
   
   fileprivate func _setupAppearance() {
     
-//    _setupListBar()
+    _setupListBar()
     _setupScrollView()
     //_setupContentController(vcs: childVCs)
     _addChildControllerToContentWith(index: 0)
-//    _addChildControllerToContentWith(index: 1)
-//    _addChildControllerToContentWith(index: 2)
   }
   
   private func _setupListBar() {
     _titleList = TitleList(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50), segmentType: segmentType)
     view.addSubview(_titleList)
-//    _titleList.snp.makeConstraints { (make) in
-//      make.leading.trailing.top.equalTo(0)
-//      make.height.equalTo(50)
-//    }
     _titleList.snp.remakeConstraints { (make) in
       make.leading.trailing.top.equalTo(0)
       make.height.equalTo(50)
@@ -121,15 +106,13 @@ extension SegmentPageController {
     view.addSubview(_scrollView)
     _scrollView.backgroundColor = .yellow
     _scrollView.snp.makeConstraints { (make) in
-//      make.leading.trailing.bottom.equalTo(0)
-//      make.top.equalTo(50)
-      make.leading.trailing.top.bottom.equalTo(0)
+      make.leading.trailing.bottom.equalTo(0)
+      make.top.equalTo(50)
     }
     _scrollView.delegate = self
     _scrollView.isPagingEnabled = true
     _scrollView.showsHorizontalScrollIndicator = false
     _scrollView.showsVerticalScrollIndicator = false
-    //_scrollView.contentOffset = .zero
   }
   
   private func _setupContentController(vcs: [UIViewController]) {
@@ -157,18 +140,17 @@ extension SegmentPageController {
   
   func _addChildControllerToContentWith(index: Int) {
     let vc = childVCs[index]
-    //vc.willMove(toParentViewController: self)
-//    vc.view.frame = CGRect(x: _scrollView.bounds.width * CGFloat(index), y: 0, width: _scrollView.frame.width, height: _scrollView.frame.height)
     
     if vc.parent != nil {
       return
     }
     
+    vc.willMove(toParentViewController: self)
     addChildViewController(vc)
     vc.view.frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0, width: self.view.frame.width, height: self.view.frame.height)
     _scrollView.addSubview(vc.view)
     vc.view.tag = index
-    //vc.didMove(toParentViewController: self)
+    vc.didMove(toParentViewController: self)
   }
 }
 
