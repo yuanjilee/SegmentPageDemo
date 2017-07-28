@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		59AE7649D5A7857D832FBDDD /* Pods_SegmentPageDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91EB62891ED844860399F73 /* Pods_SegmentPageDemoUITests.framework */; };
 		677827C608799E46B843EF3E /* Pods_SegmentPageDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78BB675430CB11D41A1750 /* Pods_SegmentPageDemo.framework */; };
-		7A0FA24A1F288CC200F34B6D /* SegmentPageController+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0FA2491F288CC200F34B6D /* SegmentPageController+UIScrollViewDelegate.swift */; };
+		7A0FA2AB1F2B46DE00F34B6D /* SegmentPageController+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0FA2A81F2B46DE00F34B6D /* SegmentPageController+UIScrollViewDelegate.swift */; };
+		7A0FA2AC1F2B46DE00F34B6D /* SegmentPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0FA2A91F2B46DE00F34B6D /* SegmentPageController.swift */; };
+		7A0FA2AD1F2B46DE00F34B6D /* TitleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0FA2AA1F2B46DE00F34B6D /* TitleList.swift */; };
 		7A1248A91F1CAE51004308E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1248A81F1CAE51004308E6 /* AppDelegate.swift */; };
 		7A1248AE1F1CAE51004308E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1248AC1F1CAE51004308E6 /* Main.storyboard */; };
 		7A1248B01F1CAE51004308E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1248AF1F1CAE51004308E6 /* Assets.xcassets */; };
@@ -20,8 +22,6 @@
 		7AF5E5691F1DAEA800692D51 /* LCKCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E5681F1DAEA800692D51 /* LCKCommons.swift */; };
 		7AF5E56D1F1F045000692D51 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E56C1F1F045000692D51 /* ContentViewController.swift */; };
 		7AF5E56F1F1F64C600692D51 /* EqualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E56E1F1F64C600692D51 /* EqualViewController.swift */; };
-		7AF5E5751F1F65C000692D51 /* SegmentPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E5731F1F65C000692D51 /* SegmentPageController.swift */; };
-		7AF5E5761F1F65C000692D51 /* TitleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E5741F1F65C000692D51 /* TitleList.swift */; };
 		7AF5E5781F1F6C8D00692D51 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E5771F1F6C8D00692D51 /* SlideViewController.swift */; };
 		7AF5E57A1F1F735C00692D51 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5E5791F1F735C00692D51 /* LaunchViewController.swift */; };
 		B496669C52087C495620DF38 /* Pods_SegmentPageDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 904C42602EC27552E520A900 /* Pods_SegmentPageDemoTests.framework */; };
@@ -49,7 +49,9 @@
 		313FB953CE18EC6F7071214B /* Pods-SegmentPageDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SegmentPageDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-SegmentPageDemo/Pods-SegmentPageDemo.release.xcconfig"; sourceTree = "<group>"; };
 		3877545A7D840D7A44DDEAC1 /* Pods-SegmentPageDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SegmentPageDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SegmentPageDemo/Pods-SegmentPageDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		3B52ECCB53DA084C081BCDB3 /* Pods-SegmentPageDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SegmentPageDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SegmentPageDemoUITests/Pods-SegmentPageDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
-		7A0FA2491F288CC200F34B6D /* SegmentPageController+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SegmentPageController+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
+		7A0FA2A81F2B46DE00F34B6D /* SegmentPageController+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SegmentPageController+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
+		7A0FA2A91F2B46DE00F34B6D /* SegmentPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentPageController.swift; sourceTree = "<group>"; };
+		7A0FA2AA1F2B46DE00F34B6D /* TitleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleList.swift; sourceTree = "<group>"; };
 		7A1248A51F1CAE51004308E6 /* SegmentPageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SegmentPageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1248A81F1CAE51004308E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A1248AD1F1CAE51004308E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,8 +68,6 @@
 		7AF5E5681F1DAEA800692D51 /* LCKCommons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCKCommons.swift; sourceTree = "<group>"; };
 		7AF5E56C1F1F045000692D51 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		7AF5E56E1F1F64C600692D51 /* EqualViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualViewController.swift; sourceTree = "<group>"; };
-		7AF5E5731F1F65C000692D51 /* SegmentPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentPageController.swift; sourceTree = "<group>"; };
-		7AF5E5741F1F65C000692D51 /* TitleList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleList.swift; sourceTree = "<group>"; };
 		7AF5E5771F1F6C8D00692D51 /* SlideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 		7AF5E5791F1F735C00692D51 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		888A978ACD38107021346698 /* Pods-SegmentPageDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SegmentPageDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SegmentPageDemoTests/Pods-SegmentPageDemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,10 +105,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A0FA2A71F2B46DE00F34B6D /* SegmentPage */ = {
+			isa = PBXGroup;
+			children = (
+				7A0FA2A81F2B46DE00F34B6D /* SegmentPageController+UIScrollViewDelegate.swift */,
+				7A0FA2A91F2B46DE00F34B6D /* SegmentPageController.swift */,
+				7A0FA2AA1F2B46DE00F34B6D /* TitleList.swift */,
+			);
+			path = SegmentPage;
+			sourceTree = "<group>";
+		};
 		7A12489C1F1CAE51004308E6 = {
 			isa = PBXGroup;
 			children = (
-				7AF5E5721F1F65C000692D51 /* SegmentPage */,
+				7A0FA2A71F2B46DE00F34B6D /* SegmentPage */,
 				7A1248EA1F1CC098004308E6 /* Vander */,
 				7A1248A71F1CAE51004308E6 /* SegmentPageDemo */,
 				7A1248BC1F1CAE51004308E6 /* SegmentPageDemoTests */,
@@ -170,17 +180,6 @@
 				7AF5E5681F1DAEA800692D51 /* LCKCommons.swift */,
 			);
 			path = Vander;
-			sourceTree = "<group>";
-		};
-		7AF5E5721F1F65C000692D51 /* SegmentPage */ = {
-			isa = PBXGroup;
-			children = (
-				7AF5E5741F1F65C000692D51 /* TitleList.swift */,
-				7AF5E5731F1F65C000692D51 /* SegmentPageController.swift */,
-				7A0FA2491F288CC200F34B6D /* SegmentPageController+UIScrollViewDelegate.swift */,
-			);
-			name = SegmentPage;
-			path = SegmentPageDemo/SegmentPage;
 			sourceTree = "<group>";
 		};
 		B96C72AECFF90A2D8C81ED06 /* Pods */ = {
@@ -502,14 +501,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AF5E5761F1F65C000692D51 /* TitleList.swift in Sources */,
 				7A1248EC1F1CC098004308E6 /* UIColor_DYKAddition.swift in Sources */,
 				7A1248A91F1CAE51004308E6 /* AppDelegate.swift in Sources */,
-				7A0FA24A1F288CC200F34B6D /* SegmentPageController+UIScrollViewDelegate.swift in Sources */,
-				7AF5E5751F1F65C000692D51 /* SegmentPageController.swift in Sources */,
+				7A0FA2AD1F2B46DE00F34B6D /* TitleList.swift in Sources */,
 				7AF5E5781F1F6C8D00692D51 /* SlideViewController.swift in Sources */,
 				7AF5E56D1F1F045000692D51 /* ContentViewController.swift in Sources */,
 				7AF5E56F1F1F64C600692D51 /* EqualViewController.swift in Sources */,
+				7A0FA2AC1F2B46DE00F34B6D /* SegmentPageController.swift in Sources */,
+				7A0FA2AB1F2B46DE00F34B6D /* SegmentPageController+UIScrollViewDelegate.swift in Sources */,
 				7AF5E57A1F1F735C00692D51 /* LaunchViewController.swift in Sources */,
 				7AF5E5691F1DAEA800692D51 /* LCKCommons.swift in Sources */,
 			);
