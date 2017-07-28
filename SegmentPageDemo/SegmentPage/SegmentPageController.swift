@@ -59,6 +59,8 @@ open class SegmentPageController: UIViewController {
   open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     
     let currentPage = Int(_scrollView.contentOffset.x / _scrollView.bounds.width)
+    
+    // PageScrollView
     _scrollView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height-50)
     _scrollView.contentSize = CGSize(width: _scrollView.frame.width * CGFloat(titles.count), height: _scrollView.frame.height)
     
@@ -66,8 +68,20 @@ open class SegmentPageController: UIViewController {
       let frame = CGRect(x: size.width * CGFloat(index), y: 0, width: _scrollView.frame.width, height: _scrollView.frame.height)
       view.frame = frame
     }
-    
     _scrollView.setContentOffset(CGPoint(x: CGFloat(currentPage) * _scrollView.frame.width, y: 0), animated: false)
+    
+    // TitleListScrollView
+    _titleList.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height-50)
+    _titleList.contentSize = CGSize(width: _titleList.frame.width * CGFloat(titles.count), height: _titleList.frame.height)
+    
+    let itemWidth = size.width / CGFloat(titles.count)
+    for (index, item) in _titleList.itemButtons.enumerated() {
+      item.frame = CGRect(x: itemWidth * CGFloat(index), y: 0, width: itemWidth, height: 50)
+    }
+    
+    _titleList.bottomLine.frame.origin.x = CGFloat(_currentPageIndex) * itemWidth
+    _titleList.bottomLine.frame.size.width = itemWidth
+    
   }
   
   

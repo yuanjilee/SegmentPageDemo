@@ -27,9 +27,10 @@ class TitleList: UIScrollView {
     }
   }
   var segmentType: SegmentType = .equal
-  
+  var itemButtons: [UIButton] = []
   var listBarItemDidClickClosure:((_ index: Int) -> Void)?
-  
+  var bottomLine: UIView
+
   
   //MARK: - Commons 
   
@@ -40,9 +41,7 @@ class TitleList: UIScrollView {
   
   var maxWidth: CGFloat = 10
   var titleFont: CGFloat = 13
-  let bottomLine: UIView
   var itemButtonSelected: UIButton?
-  var _buttons: [UIButton] = []
   
   
   //MARK: - Lifecycle
@@ -86,12 +85,12 @@ extension TitleList {
   //MARK: - Public
 
   open func scrollToCurrentItemWith(index: Int) {
-    let button = _buttons[index]
+    let button = itemButtons[index]
     _itemButtonDidClick(sender: button)
   }
   
   public func moveToSelectedIndicator(index: Int) {
-    let sender = _buttons[index]
+    let sender = itemButtons[index]
     
     if itemButtonSelected != sender { // switch item selector
       itemButtonSelected?.setTitleColor(kTextColor, for: .normal)
@@ -145,7 +144,7 @@ extension TitleList {
     itemButton.setTitleColor(kDefaultBlueColor, for: .selected)
     itemButton.addTarget(self, action: #selector(_itemButtonDidClick(sender:)), for: .touchUpInside)
     addSubview(itemButton)
-    _buttons.append(itemButton)
+    itemButtons.append(itemButton)
     maxWidth += (itemWidth + marginBetweenItems)
     contentSize.width = maxWidth
     
@@ -201,7 +200,7 @@ extension TitleList {
   }
   
   private func _getIndexWithButton(button: UIButton) -> Int {
-    let index = _buttons.index(of: button)
+    let index = itemButtons.index(of: button)
     return index ?? 0
   }
 }
