@@ -86,10 +86,11 @@ extension SegmentPageController {
   }
   
   private func _setupListBar() {
-    _titleList = TitleList(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50), segmentType: segmentType)
+    _titleList = TitleList(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 50), segmentType: segmentType)
     view.addSubview(_titleList)
     _titleList.snp.remakeConstraints { (make) in
-      make.leading.trailing.top.equalTo(0)
+      make.leading.trailing.equalTo(0)
+      make.top.equalTo(topLayoutGuide.snp.bottom)
       make.height.equalTo(50)
     }
     _titleList.titles = titles
@@ -102,17 +103,19 @@ extension SegmentPageController {
   
   private func _setupScrollView() {
     _scrollView = UIScrollView()
-    _scrollView.contentSize = CGSize(width: view.bounds.width * CGFloat(titles.count), height: view.bounds.height)
     view.addSubview(_scrollView)
     _scrollView.backgroundColor = .yellow
     _scrollView.snp.makeConstraints { (make) in
       make.leading.trailing.bottom.equalTo(0)
-      make.top.equalTo(50)
+      make.top.equalTo(_titleList.snp.bottom)
     }
+    _scrollView.layoutIfNeeded()
     _scrollView.delegate = self
     _scrollView.isPagingEnabled = true
     _scrollView.showsHorizontalScrollIndicator = false
     _scrollView.showsVerticalScrollIndicator = false
+    _scrollView.contentSize = CGSize(width: _scrollView.bounds.width * CGFloat(titles.count), height: _scrollView.bounds.height)
+
   }
   
   private func _setupContentController(vcs: [UIViewController]) {
@@ -147,7 +150,7 @@ extension SegmentPageController {
     
     vc.willMove(toParentViewController: self)
     addChildViewController(vc)
-    vc.view.frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0, width: self.view.frame.width, height: self.view.frame.height)
+    vc.view.frame = CGRect(x: self.view.frame.width * CGFloat(index), y: 0, width: self.view.frame.width, height: self.view.frame.height-50)
     _scrollView.addSubview(vc.view)
     vc.view.tag = index
     vc.didMove(toParentViewController: self)
