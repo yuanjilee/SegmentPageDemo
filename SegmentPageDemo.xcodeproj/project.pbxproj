@@ -108,9 +108,9 @@
 		7A0FA2A71F2B46DE00F34B6D /* SegmentPage */ = {
 			isa = PBXGroup;
 			children = (
-				7A0FA2A81F2B46DE00F34B6D /* SegmentPageController+UIScrollViewDelegate.swift */,
-				7A0FA2A91F2B46DE00F34B6D /* SegmentPageController.swift */,
 				7A0FA2AA1F2B46DE00F34B6D /* TitleList.swift */,
+				7A0FA2A91F2B46DE00F34B6D /* SegmentPageController.swift */,
+				7A0FA2A81F2B46DE00F34B6D /* SegmentPageController+UIScrollViewDelegate.swift */,
 			);
 			path = SegmentPage;
 			sourceTree = "<group>";

@@ -118,7 +118,7 @@ extension SegmentPageController {
   private func _setupScrollView() {
     _scrollView = UIScrollView()
     view.addSubview(_scrollView)
-    _scrollView.backgroundColor = .yellow
+//    _scrollView.backgroundColor = .yellow
     _scrollView.snp.makeConstraints { (make) in
       make.leading.trailing.bottom.equalTo(0)
       make.top.equalTo(_titleList.snp.bottom)
